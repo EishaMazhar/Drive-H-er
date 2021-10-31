@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  driveher_app:
+    build: .
+    ports:
+      - 50000:50000
+    environment:
+      DB_URL: mongodb://db/vidly
+      MONGO_INIT_DATABASE: 1
+  db:
+    image: mongo:4.0-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      - app-data:/data/db
+
+volumes:
+  app-data:
+
